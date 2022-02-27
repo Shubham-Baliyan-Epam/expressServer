@@ -3,10 +3,13 @@ module.exports = (Sequelize, sequelize) => {
     "product",
     {
       name: Sequelize.STRING,
-      description: Sequelize.STRING,
-      price: Sequelize.INTEGER,
       category: Sequelize.STRING,
+      price: Sequelize.INTEGER,
+      brand: Sequelize.STRING,
       rating: Sequelize.INTEGER,
+      stock: Sequelize.INTEGER,
+      img: Sequelize.STRING,
+      description: Sequelize.STRING,
     },
     {
       timestamps: false,
