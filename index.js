@@ -4,8 +4,9 @@ const FILTER = require("./utils/filter");
 const cors = require("cors");
 const db = require("./model");
 const app = express();
-const empRouter = require("./routes/employee.route");
-const studentRouter = require("./routes/student.route");
+// const empRouter = require("./routes/employee.route");
+// const studentRouter = require("./routes/student.route");
+const productRouter = require("./routes/product.route");
 const authRouter = require("./routes/user.route");
 // const insRouter = require("./routes/insurance.route");
 db.sequelize.sync();
@@ -24,8 +25,9 @@ app.get("/", async (req, res) => {
 });
 app.use("/", authRouter);
 // app.use("/employee", empRouter);
-app.use("/student", studentRouter);
+// app.use("/student", studentRouter);
 // app.use("/insurance", insRouter);
+app.use("/product", productRouter);
 
 app.listen(8080, () => {
   console.log("express server + sequelize working on port 8080");
