@@ -1,3 +1,4 @@
+const { Op } = require("sequelize");
 module.exports = (filter) => {
   let newFilter = {};
   if (Object.keys(filter).length !== 0) {
