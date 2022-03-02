@@ -20,6 +20,8 @@ const transporter = nodemailer.createTransport({
 });
 
 // const insRouter = require("./routes/insurance.route");
+// db.Order.hasMany(db.Product, { allowNull: true, defaultValue: null });
+// db.Product.belongsTo(db.Order, { allowNull: true, defaultValue: null });
 db.sequelize
   .sync()
   .then()
@@ -37,15 +39,17 @@ app.get("/", async (req, res) => {
     data,
   });
 });
-app.get("/sendmail", async (req, res) => {
-  let email = req.query.email;
+app.post("/sendmail", async (req, res) => {
+  let email = req.body.email;
+  let message = req.body.message;
+  let subject = req.body.subject;
   console.log(email);
   try {
     await transporter.sendMail({
       from: "shubham@transcoders.run",
       to: email,
-      subject: "Successfully Registered ",
-      html: "<h1>Thank you for registering to our app</h1>",
+      subject: subject,
+      html: "<h1>" + message + "</h1>",
     });
     res.status(200).json({
       status: "success",
