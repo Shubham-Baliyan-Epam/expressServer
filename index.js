@@ -9,6 +9,7 @@ const app = express();
 // const studentRouter = require("./routes/student.route");
 const productRouter = require("./routes/product.route");
 const authRouter = require("./routes/user.route");
+const orderRouter = require("./routes/order.route");
 const transporter = nodemailer.createTransport({
   host: "mail.name.com",
   port: 587,
@@ -19,7 +20,10 @@ const transporter = nodemailer.createTransport({
 });
 
 // const insRouter = require("./routes/insurance.route");
-db.sequelize.sync();
+db.sequelize
+  .sync()
+  .then()
+  .catch((err) => console.log(err));
 app.use(cors());
 app.use(express.json());
 app.get("/", async (req, res) => {
@@ -57,6 +61,7 @@ app.use("/", authRouter);
 // app.use("/student", studentRouter);
 // app.use("/insurance", insRouter);
 app.use("/product", productRouter);
+app.use("/order", orderRouter);
 
 app.listen(8080, () => {
   console.log("express server + sequelize working on port 8080");
