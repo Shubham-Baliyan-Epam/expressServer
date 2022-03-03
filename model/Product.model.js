@@ -16,5 +16,6 @@ module.exports = (Sequelize, sequelize) => {
       freezeTableName: true,
     }
   );
+
   return Product;
 };

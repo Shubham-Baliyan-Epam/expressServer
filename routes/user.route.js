@@ -17,6 +17,7 @@ router.get("/login", async (req, res) => {
         message: "User successfully loggedin.",
         data: {
           email,
+          id: data.id,
           name: data.name,
         },
       });

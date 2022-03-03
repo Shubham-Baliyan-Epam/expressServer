@@ -4,9 +4,9 @@ module.exports = (Sequelize, sequelize) => {
   const Order = sequelize.define(
     "order",
     {
-      price: Sequelize.INTEGER,
+      sale_price: Sequelize.INTEGER,
       address1: Sequelize.STRING,
-
+      order_date: Sequelize.DATE,
       address2: Sequelize.STRING,
       user_id: {
         type: Sequelize.INTEGER,
@@ -44,7 +44,6 @@ module.exports = (Sequelize, sequelize) => {
       },
     },
     {
-      timestamps: false,
       freezeTableName: true,
     }
   );
