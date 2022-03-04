@@ -1,7 +1,31 @@
 const express = require("express");
 let db = require("../model");
 let router = express.Router();
-
+router.put("/user/:id", async (req, res) => {
+  let id = req.params.id;
+  try {
+    let data = await db.User.update(
+      {
+        ...req.body,
+      },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    res.status(201).json({
+      status: "success",
+      message: " User updated successfully .",
+      data,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "failed",
+      message: "No User found .",
+    });
+  }
+});
 router.get("/login", async (req, res) => {
   let { email, password } = req.query;
   try {
