@@ -11,11 +11,11 @@ const orderRouter = require("./routes/order.route");
 
 //creating transporter for nodeMailer
 const transporter = nodemailer.createTransport({
-  host: "mail.name.com",
+  host: "mail.com",
   port: 587,
   auth: {
-    user: "shubham@transcoders.run",
-    pass: "############",
+    user: "###############",
+    pass: "#################",
   },
 });
 
