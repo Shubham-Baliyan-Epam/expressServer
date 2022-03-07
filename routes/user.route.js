@@ -1,6 +1,9 @@
 const express = require("express");
 let db = require("../model");
 let router = express.Router();
+
+//routes for users ,login,registration
+
 router.put("/user/:id", async (req, res) => {
   let id = req.params.id;
   try {

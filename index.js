@@ -5,6 +5,8 @@ const db = require("./model");
 const app = express();
 // const empRouter = require("./routes/employee.route");
 // const studentRouter = require("./routes/student.route");
+
+//importing the routers
 const productRouter = require("./routes/product.route");
 const authRouter = require("./routes/user.route");
 const orderRouter = require("./routes/order.route");
@@ -21,14 +23,19 @@ const transporter = nodemailer.createTransport({
 
 // const insRouter = require("./routes/insurance.route");
 
+//sync the db with code
 db.sequelize
   .sync()
   .then()
   .catch((err) => console.log(err));
 
+//cross origin request
 app.use(cors());
+
+//parse the body to json
 app.use(express.json());
 
+//base route
 app.get("/", async (req, res) => {
   res.json({
     status: "success",

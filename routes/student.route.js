@@ -3,6 +3,8 @@ let router = express.Router();
 let db = require("../model");
 const filter = require("../utils/filter");
 
+//routes for student's
+
 router.get("/", async (req, res) => {
   try {
     let filters = filter(req.query);

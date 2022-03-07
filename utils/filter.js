@@ -1,6 +1,9 @@
 const { Op } = require("sequelize");
+
+//this function is used to make a where filter dynamically from the obtained query parameters
 module.exports = (filter) => {
   let newFilter = {};
+
   if (Object.keys(filter).length !== 0) {
     Object.keys(filter).map((item) => {
       if (item === "limit") return;
