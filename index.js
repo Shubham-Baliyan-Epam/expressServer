@@ -3,6 +3,9 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 const db = require("./model");
 const app = express();
+const verifyToken = require("./middleware/verifyToken");
+require("dotenv").config();
+
 // const empRouter = require("./routes/employee.route");
 // const studentRouter = require("./routes/student.route");
 
@@ -65,7 +68,23 @@ app.post("/sendmail", async (req, res) => {
     });
   }
 });
-
+app.get("/hidden", verifyToken, (req, res) => {
+  if (!req.user) {
+    res.status(403).send({
+      message: "Invalid JWT token",
+    });
+  }
+  console.log("req.user", req.user);
+  if (req.user) {
+    res.status(200).send({
+      message: "Congratulations! but there is no hidden content",
+    });
+  } else {
+    res.status(403).send({
+      message: "Unauthorised access",
+    });
+  }
+});
 //routers
 app.use("/", authRouter);
 // app.use("/employee", empRouter);
@@ -75,6 +94,6 @@ app.use("/product", productRouter);
 app.use("/order", orderRouter);
 
 //start the server
-app.listen(8080, () => {
+app.listen(process.env.PORT, () => {
   console.log("express server + sequelize working on port 8080");
 });
