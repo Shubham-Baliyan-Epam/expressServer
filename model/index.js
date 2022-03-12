@@ -21,7 +21,7 @@ const db = {
 //exporting the tables
 db.User = require("./User.model")(Sequelize, sequelize);
 db.Product = require("./Product.model")(Sequelize, sequelize);
-// db.Employee = require("./Employee.model")(Sequelize, sequelize);
+db.Employee = require("./Employee.model")(Sequelize, sequelize);
 // db.Insurance = require("./Insurance.model")(Sequelize, sequelize);
 // db.Student = require("./Student.model")(Sequelize, sequelize);
 db.Order = require("./Order.model")(Sequelize, sequelize);

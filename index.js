@@ -6,7 +6,7 @@ const app = express();
 const verifyToken = require("./middleware/verifyToken");
 require("dotenv").config();
 
-// const empRouter = require("./routes/employee.route");
+const empRouter = require("./routes/employee.route");
 // const studentRouter = require("./routes/student.route");
 
 //importing the routers
@@ -87,7 +87,7 @@ app.get("/hidden", verifyToken, (req, res) => {
 });
 //routers
 app.use("/", authRouter);
-// app.use("/employee", empRouter);
+app.use("/employee", empRouter);
 // app.use("/student", studentRouter);
 // app.use("/insurance", insRouter);
 app.use("/product", productRouter);
